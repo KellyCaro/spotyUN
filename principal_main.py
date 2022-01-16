@@ -1,4 +1,9 @@
-from clases import *
+from Clases.Cancion import *
+from Clases.Cliente import *
+from Clases.Conexion import *
+from Clases.Plan import *
+from Clases.SongList import *
+
 conect=Conexion()
 
 miConexion=Conexion().conexion()
@@ -16,7 +21,6 @@ tablaListaC=Conexion().sql_table(miConexion,"list (code integer PRIMARY KEY AUTO
 tablaPlan=Conexion().sql_table(miConexion,"Plan(code	integer PRIME KEY,name	text,value	text,amount	integer")
 tablaPlanXCliente=Conexion().sql_table(miConexion,"PlanesXCliente(transactionCode integer PRIME KEY, planCode text, clientID text)")
 
-"""************************************************************"""
 """*********************************************************************
 OBJETO SONGLIST FUNCIONES
 **********************************************************************"""
