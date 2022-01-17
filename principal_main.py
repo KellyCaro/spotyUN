@@ -131,11 +131,18 @@ def menuLista(identificacion):
 
     elif menu=="3":
         nombreCancion=input("Ingrese el nombre de la cancion: ")
-        print("\n\nListas con el nombre de la cancion : "+nombreCancion+"\n",miLista.buscarListasPorNombredeCancion(miConexion,identificacionCliente,nombreCancion))
+        print("\n\nListas con el nombre de la cancion : "+nombreCancion)
+        for i in (miLista.buscarListasPorNombredeCancion(miConexion,identificacionCliente,nombreCancion)):
+            for j in i:
+                print("\tLista : ",j)
+        print("\n")
     elif menu=="4":
         nombreInterprete=input("Ingrese el nombre del interprete: ")
-        print("\n\nListas con el nombre del interprete : "+nombreInterprete+"\n",miLista.buscarListasPorNombredeInterprete(miConexion,identificacionCliente,nombreInterprete))
-        
+        print("\n\nListas con el nombre del interprete : "+nombreInterprete)
+        for i in (miLista.buscarListasPorNombredeInterprete(miConexion,identificacionCliente,nombreInterprete)):
+            for j in i:
+                print("\tLista : ",j)
+        print("\n")
     elif menu=="5":
         miLista.imprimeDiccionario(miLista.ListaCancionesAutores(miConexion,identificacion))
 
