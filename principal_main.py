@@ -27,11 +27,15 @@ OBJETO SONGLIST FUNCIONES
 def ingresadatos():
     print("Hola! te damos la bienvenida a Listas de SpotyUN")
     print("1)Crear una lista de canciones")
-    print("2)Consultar lista por el nombre")
-    print("3)Consultar tus listas")
-    print("4)Eliminar lista completa")
-    print("5)Actualiza el nombre de la lista")
-    print("6)Eliminar cancion de lista")
+    print("2)Consultar lista por el nombre de la lista")
+    print("3)Consultar lista por nombre de cancion")
+    print("4)Consultar lista por autor de cancion")
+    print("5)Consultar tus listas")
+    print("----------------------------------------------------------------------")
+    
+    print("6)Eliminar lista completa")
+    print("7)Actualiza el nombre de la lista")
+    print("8)Eliminar cancion de lista")
     print("7)Actualiza cancion de una lista")
     print("9)Salir")
     return input()
@@ -127,22 +131,29 @@ def menuLista(identificacion):
         miLista.imprimeDiccionario(miLista.ListaCancionesAutoresOnly(miConexion,identificacionCliente,nombreLista))
 
     elif menu=="3":
+        nombreCancion=input("Ingrese el nombre de la cancion: ")
+        print("\n\nListas con el nombre de la cancion : "+nombreCancion+"\n",miLista.buscarListasPorNombredeCancion(miConexion,identificacionCliente,nombreCancion))
+    elif menu=="4":
+        nombreInterprete=input("Ingrese el nombre del interprete: ")
+        print("\n\nListas con el nombre del interprete : "+nombreInterprete+"\n",miLista.buscarListasPorNombredeInterprete(miConexion,identificacionCliente,nombreInterprete))
+        
+    elif menu=="5":
         miLista.imprimeDiccionario(miLista.ListaCancionesAutores(miConexion,identificacion))
 
-    elif menu=="4":
-        nombreLista=input("Ingrese el nombre de la lista a buscar")
+    elif menu=="6":
+        nombreLista=input("Ingrese el nombre de la lista a eliminar")
         deleteAllList(miConexion,nombreLista,identificacionCliente)
 
-    elif menu=="5":
+    elif menu=="7":
         nombreLista=input("Ingrese el nombre de la lista a buscar")
         nombreactualiza=input("Ingrese el nuevo nombre")
         updateList(con,nombreLista,nombreactualiza, identificacionCliente)
-    elif menu=="6":
+    elif menu=="8":
         miLista.imprimeDiccionario(miLista.ListaCancionesAutores(miConexion,identificacionCliente))
         nombreLista=input("Ingrese el nombre de la lista ")
         codeSong=int(input("ingrese el codigo de la cancion que desea eliminar de la lista "))
         print(miLista.eliminaSongOfList(miConexion,nombreLista,identificacionCliente,codeSong))
-    elif menu=="7":
+    elif menu=="9":
         imprimeDiccionario(ListaCancionesAutores(miConexion,identificacionCliente))
 
         lista=input("ingrese el nombre de la lista que quiere actualizar")
@@ -153,7 +164,7 @@ def menuLista(identificacion):
             updateSongOfList(miConexion,lista,identificacionCliente,codigoSongOld, datosCancionNueva)
         else:
             print("Ya existe esa cancion en tu lista")
-    elif menu=="9":
+    elif menu=="0":
         usuarioMain(identificacion)
 
 #print(NombreListayCanciones(con,"1023961225"))
