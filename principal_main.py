@@ -31,7 +31,6 @@ def ingresadatos():
     print("3)Consultar lista por nombre de cancion")
     print("4)Consultar lista por autor de cancion")
     print("5)Consultar tus listas")
-    print("----------------------------------------------------------------------")
     
     print("6)Eliminar lista completa")
     print("7)Actualiza el nombre de la lista")
@@ -97,7 +96,7 @@ def menuLista(identificacion):
         while bucle==True:
             if ingresa==True:
                 datos[4]=int(input("\nIngrese el codigo de la cancion que va a agregar"))
-                datosCancion=miCancion.searchSingleRecord(miConexion, datos[4], "Grabacion",True)
+                datosCancion=miCancion.searchSingleRecord(miConexion, datos[4], True)
                 datos[5]=datosCancion[1]#traer del objeto cancion
                 datos[6]=datosCancion[4]#traer del objeto cancion
                 datos[7]="imagen.jpg"

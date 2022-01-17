@@ -264,7 +264,6 @@ class ListaCanciones:
             return "No hay listas con esta cancion"
         return set(filas)
     def buscarListasPorNombredeInterprete(self,con,idCliente,nombrePerformer):
-        print(idCliente,nombrePerformer)
         existeCliente='SELECT name FROM list WHERE recordPerformer ="'+nombrePerformer+'" AND clientIdentification='+str(idCliente)
         cursorOBJ= con.cursor()
         cursorOBJ.execute(existeCliente)
@@ -272,6 +271,7 @@ class ListaCanciones:
         if len(filas)==0:
             return "No hay listas con este interprete"
         return set(filas)
+
 """**********************************************"""
 """CLASE BUSCADOR"""
 
