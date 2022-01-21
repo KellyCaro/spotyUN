@@ -51,7 +51,7 @@ class Cliente:
         #para la opcion 2 escribir una tupla
         cursorObj = conexion.cursor()
         datos = Client_data
-        cursorObj.execute('''INSERT INTO cliente VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)''',datos)
+        cursorObj.execute('''INSERT INTO Client VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?)''',datos)
         #guarda en la base de datos
         conexion.commit()
         return print("registo exitoso")
@@ -76,14 +76,12 @@ class Cliente:
     #confirma si los clientes existen en la base de datos
     def consultaClientes(self,identification,conexion):
         cursorObj = conexion.cursor()
-        consultarTabla="SELECT * FROM Client WHERE identification={}".format(identification)
+        consultarTabla="SELECT * FROM Client WHERE identification='{}'".format(identification)
         cursorObj.execute(consultarTabla)
         filas= cursorObj.fetchall()
         vacio=0
         if len(filas)==0:
-            print("entro")
-
-
+            print("")
 
         else:
             return filas

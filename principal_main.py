@@ -196,7 +196,6 @@ def usuarioMain():
 
     print("*******************************************")
     documento= input("Ingresa tu numero de documento: ")
-
     print("*******************************************")
 
 
@@ -205,10 +204,14 @@ def usuarioMain():
     try:
         identificacion=miCliente.consultaClientes(documento,miConexion)[0][0]
     except:
-        print("No existe ningun usuario con el numero de identificación")
-        #miCliente.registerCliente(self,miCliente.leer_info(self),miConexion)
-        usuarioMain()
-
+        registrochoice=input("No hay una identificacion registrada\nDesea registrarse '1' \nDesea salir marque '2'")
+        if registrochoice=="1":
+            tuplaDatos=miCliente.registro()
+            miCliente.registerCliente(tuplaDatos,miConexion)
+            usuarioMain()
+        else:
+            print("Adios")
+            usuarioMain()
 
 
     nombre=miCliente.consultaClientes(identificacion,miConexion)[0][1]
